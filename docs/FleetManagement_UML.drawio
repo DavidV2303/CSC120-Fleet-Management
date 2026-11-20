@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="yZj9ECOjxIOy-3ErF1Xy">
-    <mxGraphModel dx="1426" dy="846" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2577" dy="1515" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -52,37 +52,37 @@
         <mxCell id="x6lifGAfol0NQy3nW4Tx-87" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;newEdgeStyle=%7B%22edgeStyle%22%3A%22orthogonalEdgeStyle%22%2C%22rounded%22%3A%220%22%2C%22orthogonalLoop%22%3A%221%22%2C%22jettySize%22%3A%22auto%22%2C%22html%22%3A%221%22%2C%22defaultLabelBackgroundColor%22%3A%22page%22%7D;" value="FleetManagement" vertex="1">
           <mxGeometry height="312" width="550" x="1710" y="350" as="geometry" />
         </mxCell>
-        <mxCell id="x6lifGAfol0NQy3nW4Tx-88" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ main(args: String []): void" vertex="1">
+        <mxCell id="x6lifGAfol0NQy3nW4Tx-88" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- main(args: String []): void" vertex="1">
           <mxGeometry height="26" width="550" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="x6lifGAfol0NQy3nW4Tx-89" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ loadCSV(filename: String): ArrayList&amp;lt;Boat&amp;gt;" vertex="1">
+        <mxCell id="x6lifGAfol0NQy3nW4Tx-89" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- loadCSV(filename: String): ArrayList&amp;lt;Boat&amp;gt;" vertex="1">
           <mxGeometry height="26" width="550" y="52" as="geometry" />
         </mxCell>
-        <mxCell id="x6lifGAfol0NQy3nW4Tx-91" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ loadFleet(): ArrayList&amp;lt;Boat&amp;gt;" vertex="1">
+        <mxCell id="x6lifGAfol0NQy3nW4Tx-91" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- loadFleet(): ArrayList&amp;lt;Boat&amp;gt;" vertex="1">
           <mxGeometry height="26" width="550" y="78" as="geometry" />
         </mxCell>
-        <mxCell id="x6lifGAfol0NQy3nW4Tx-90" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ saveFleet(fleet: ArrayList&amp;lt;Boat&amp;gt;): void" vertex="1">
+        <mxCell id="x6lifGAfol0NQy3nW4Tx-90" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- saveFleet(fleet: ArrayList&amp;lt;Boat&amp;gt;): void" vertex="1">
           <mxGeometry height="26" width="550" y="104" as="geometry" />
         </mxCell>
-        <mxCell id="x6lifGAfol0NQy3nW4Tx-92" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ parseBoat(csvLine: String): Boat" vertex="1">
+        <mxCell id="x6lifGAfol0NQy3nW4Tx-92" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- parseBoat(csvLine: String): Boat" vertex="1">
           <mxGeometry height="26" width="550" y="130" as="geometry" />
         </mxCell>
-        <mxCell id="x6lifGAfol0NQy3nW4Tx-93" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ runMenu(fleet: ArrayList&amp;lt;Boat&amp;gt;): void" vertex="1">
+        <mxCell id="x6lifGAfol0NQy3nW4Tx-93" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- runMenu(fleet: ArrayList&amp;lt;Boat&amp;gt;): void" vertex="1">
           <mxGeometry height="26" width="550" y="156" as="geometry" />
         </mxCell>
-        <mxCell id="x6lifGAfol0NQy3nW4Tx-94" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ printFleet(fleet: ArrayList&amp;lt;Boat&amp;gt;): void" vertex="1">
+        <mxCell id="x6lifGAfol0NQy3nW4Tx-94" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- printFleet(fleet: ArrayList&amp;lt;Boat&amp;gt;): void" vertex="1">
           <mxGeometry height="26" width="550" y="182" as="geometry" />
         </mxCell>
-        <mxCell id="x6lifGAfol0NQy3nW4Tx-95" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ addBoat(fleet: ArrayList&amp;lt;Boat&amp;gt;): void" vertex="1">
+        <mxCell id="x6lifGAfol0NQy3nW4Tx-95" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- addBoat(fleet: ArrayList&amp;lt;Boat&amp;gt;): void" vertex="1">
           <mxGeometry height="26" width="550" y="208" as="geometry" />
         </mxCell>
-        <mxCell id="x6lifGAfol0NQy3nW4Tx-96" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ removeBoat(fleet: ArrayList&amp;lt;Boat&amp;gt;): void" vertex="1">
+        <mxCell id="x6lifGAfol0NQy3nW4Tx-96" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- removeBoat(fleet: ArrayList&amp;lt;Boat&amp;gt;): void" vertex="1">
           <mxGeometry height="26" width="550" y="234" as="geometry" />
         </mxCell>
-        <mxCell id="x6lifGAfol0NQy3nW4Tx-97" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ findBoat(fleet: ArrayList&amp;lt;Boat&amp;gt;, name: String): Boat" vertex="1">
+        <mxCell id="x6lifGAfol0NQy3nW4Tx-97" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- findBoat(fleet: ArrayList&amp;lt;Boat&amp;gt;, name: String): Boat" vertex="1">
           <mxGeometry height="26" width="550" y="260" as="geometry" />
         </mxCell>
-        <mxCell id="x6lifGAfol0NQy3nW4Tx-98" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ requestExpense(fleet: ArrayList&amp;lt;Boat&amp;gt;): void" vertex="1">
+        <mxCell id="x6lifGAfol0NQy3nW4Tx-98" parent="x6lifGAfol0NQy3nW4Tx-87" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- requestExpense(fleet: ArrayList&amp;lt;Boat&amp;gt;): void" vertex="1">
           <mxGeometry height="26" width="550" y="286" as="geometry" />
         </mxCell>
         <mxCell id="x6lifGAfol0NQy3nW4Tx-99" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="&amp;lt;&amp;lt;Enumeration&amp;gt;&amp;gt;&lt;div&gt;BoatType&lt;/div&gt;" vertex="1">
