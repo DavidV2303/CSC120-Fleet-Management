@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CSC120-Fleet-Management.iml" filepath="$PROJECT_DIR$/CSC120-Fleet-Management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/docs/CSC120-Fleet-Management.iml" filepath="$PROJECT_DIR$/docs/CSC120-Fleet-Management.iml" />
       <module fileurl="file://$PROJECT_DIR$/Fleet Management/Fleet Management.iml" filepath="$PROJECT_DIR$/Fleet Management/Fleet Management.iml" />
     </modules>
   </component>
