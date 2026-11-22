@@ -84,35 +84,26 @@ public class FleetManagement {
     private static ArrayList<Boat> loadCSV(String filename) {
         ArrayList<Boat> fleet;
         String line;
-        BufferedReader reader;
 
         fleet = new ArrayList<>();
 
-        try {
-
-            reader = new BufferedReader(new FileReader(filename));
+        try (BufferedReader reader =
+                     new BufferedReader(new FileReader(filename))) {
 
             line = reader.readLine();
 
             while (line != null) {
-
                 fleet.add(parseBoat(line));
 
                 line = reader.readLine();
-
             }
 
-            reader.close();
-
-
         } catch (IOException exception) {
-            System.out.println("Error reading CSV file: " + exception.getMessage());
-
+            System.out.println("Error reading CSV file: "
+                    + exception.getMessage());
         }
 
         return fleet;
-
-
     }
 
     /**
@@ -121,18 +112,16 @@ public class FleetManagement {
      * @param fleet the fleet to save
      */
     private static void saveFleet(ArrayList<Boat> fleet) {
-        ObjectOutputStream output;
 
-        try {
+        try (ObjectOutputStream output =
+                     new ObjectOutputStream(new FileOutputStream(FLEET_FILE))) {
 
-            output = new ObjectOutputStream(new FileOutputStream(FLEET_FILE));
             output.writeObject(fleet);
-            output.close();
 
         } catch (IOException exception) {
-            System.out.println("Error saving fleet: " + exception.getMessage());
+            System.out.println("Error saving fleet: "
+                    + exception.getMessage());
         }
-
 
     }
 
@@ -143,24 +132,22 @@ public class FleetManagement {
      */
     private static ArrayList<Boat> loadFleet() {
         ArrayList<Boat> fleet;
-        ObjectInputStream input;
 
         fleet = new ArrayList<>();
 
-        try {
+        try (ObjectInputStream input =
+                     new ObjectInputStream(new FileInputStream(FLEET_FILE))) {
 
-            input = new ObjectInputStream(new FileInputStream(FLEET_FILE));
             fleet = (ArrayList<Boat>) input.readObject();
-            input.close();
 
         } catch (IOException exception) {
             System.out.println("Error loading fleet: "
                     + exception.getMessage());
+
         } catch (ClassNotFoundException exception) {
             System.out.println("Error restoring fleet: "
                     + exception.getMessage());
         }
-
         return fleet;
 
     }
