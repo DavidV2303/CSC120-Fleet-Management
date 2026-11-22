@@ -41,7 +41,6 @@ public class FleetManagement {
 
         System.out.println("Exiting the Fleet Management System");
 
-
     }
 
     /**
