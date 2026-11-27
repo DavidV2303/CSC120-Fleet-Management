@@ -1,0 +1,14 @@
+# Generated fleet files
+FleetData.db
+FleetData-*.tmp
+
+# Compiled Java files
+out/
+*.class
+
+# IntelliJ local settings
+.idea/workspace.xml
+.idea/shelf/
+
+# macOS files
+.DS_Store
