@@ -46,6 +46,8 @@ public class FleetManagement {
 
         runMenu(fleet, keyboard);
 
+        keyboard.close();
+
         try {
             saveFleet(fleet);
         } catch (IOException exception) {
@@ -94,28 +96,29 @@ public class FleetManagement {
      * Loads boat information from a CSV file into a fleet.
      *
      * @param filename the name of the CSV file
+     * @throws IOException if the CSV file cannot be read
      * @return the fleet containing the loaded boats
+     *
      */
     private static ArrayList<Boat> loadCSV(String filename)
-            throws IOException{
+            throws IOException {
 
-            ArrayList<Boat> fleet;
-            String line;
+        ArrayList<Boat> fleet;
+        String line;
 
-            fleet = new ArrayList<>();
+        fleet = new ArrayList<>();
 
-            try (BufferedReader reader =
-                         new BufferedReader(new FileReader(filename))) {
+        try (BufferedReader reader =
+                     new BufferedReader(new FileReader(filename))) {
 
+            line = reader.readLine();
+
+            while (line != null) {
+                fleet.add(parseBoat(line));
                 line = reader.readLine();
-
-                while (line != null) {
-                    fleet.add(parseBoat(line));
-
-                    line = reader.readLine();
-                }
-
             }
+        }
+
         return fleet;
     }
 
@@ -155,6 +158,8 @@ public class FleetManagement {
     /**
      * Loads the fleet from the serialized database file.
      *
+     * @throws IOException if the database cannot be read
+     * @throws ClassNotFoundException if a serialized class cannot be found
      * @return the restored fleet of boats
      */
     private static ArrayList<Boat> loadFleet() throws IOException, ClassNotFoundException {
