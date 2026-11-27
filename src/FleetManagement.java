@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 
 /**
@@ -9,7 +12,6 @@ import java.io.*;
  */
 public class FleetManagement {
 
-    private static final Scanner keyboard = new Scanner(System.in);
     private static final String FLEET_FILE = "FleetData.db";
 
     /**
@@ -20,24 +22,38 @@ public class FleetManagement {
     public static void main(String[] args) {
 
         ArrayList<Boat> fleet;
+        Scanner keyboard;
 
-        if (args.length > 0) {
-
-            fleet = loadCSV(args[0]);
-
-        } else {
-
-            fleet = loadFleet();
-
+        try {
+            if (args.length > 0) {
+                fleet = loadCSV(args[0]);
+            } else {
+                fleet = loadFleet();
+            }
+        } catch (IOException | ClassNotFoundException exception) {
+            System.out.println("Error loading fleet: "
+                    + exception.getMessage());
+            System.exit(1);
+            return;
         }
+
+        keyboard = new Scanner(System.in);
+
 
         System.out.println("Welcome to the Fleet Management System");
         System.out.println("--------------------------------------");
         System.out.println();
 
-        runMenu(fleet);
+        runMenu(fleet, keyboard);
 
-        saveFleet(fleet);
+        try {
+            saveFleet(fleet);
+        } catch (IOException exception) {
+            System.out.println("Error saving fleet: "
+                    + exception.getMessage());
+            System.exit(1);
+            return;
+        }
 
         System.out.println("Exiting the Fleet Management System");
 
@@ -80,48 +96,60 @@ public class FleetManagement {
      * @param filename the name of the CSV file
      * @return the fleet containing the loaded boats
      */
-    private static ArrayList<Boat> loadCSV(String filename) {
-        ArrayList<Boat> fleet;
-        String line;
+    private static ArrayList<Boat> loadCSV(String filename)
+            throws IOException{
 
-        fleet = new ArrayList<>();
+            ArrayList<Boat> fleet;
+            String line;
 
-        try (BufferedReader reader =
-                     new BufferedReader(new FileReader(filename))) {
+            fleet = new ArrayList<>();
 
-            line = reader.readLine();
-
-            while (line != null) {
-                fleet.add(parseBoat(line));
+            try (BufferedReader reader =
+                         new BufferedReader(new FileReader(filename))) {
 
                 line = reader.readLine();
+
+                while (line != null) {
+                    fleet.add(parseBoat(line));
+
+                    line = reader.readLine();
+                }
+
             }
-
-        } catch (IOException exception) {
-            System.out.println("Error reading CSV file: "
-                    + exception.getMessage());
-        }
-
         return fleet;
     }
 
     /**
-     * Saves the fleet to a serialized database file.
+     * Safely saves the fleet to a serialized database file.
      *
      * @param fleet the fleet to save
+     * @throws IOException if the fleet cannot be saved
      */
-    private static void saveFleet(ArrayList<Boat> fleet) {
+    private static void saveFleet(ArrayList<Boat> fleet)
+            throws IOException {
 
-        try (ObjectOutputStream output =
-                     new ObjectOutputStream(new FileOutputStream(FLEET_FILE))) {
+        Path databasePath;
+        Path temporaryPath;
 
-            output.writeObject(fleet);
+        databasePath = Path.of(FLEET_FILE).toAbsolutePath();
+        temporaryPath = Files.createTempFile(
+                databasePath.getParent(), "FleetData-", ".tmp");
 
-        } catch (IOException exception) {
-            System.out.println("Error saving fleet: "
-                    + exception.getMessage());
+        try {
+            try (ObjectOutputStream output =
+                         new ObjectOutputStream(
+                                 Files.newOutputStream(temporaryPath))) {
+
+                output.writeObject(fleet);
+            }
+
+            Files.move(temporaryPath, databasePath,
+                    StandardCopyOption.REPLACE_EXISTING,
+                    StandardCopyOption.ATOMIC_MOVE);
+
+        } finally {
+            Files.deleteIfExists(temporaryPath);
         }
-
     }
 
     /**
@@ -129,24 +157,16 @@ public class FleetManagement {
      *
      * @return the restored fleet of boats
      */
-    private static ArrayList<Boat> loadFleet() {
+    private static ArrayList<Boat> loadFleet() throws IOException, ClassNotFoundException {
         ArrayList<Boat> fleet;
-
-        fleet = new ArrayList<>();
 
         try (ObjectInputStream input =
                      new ObjectInputStream(new FileInputStream(FLEET_FILE))) {
 
             fleet = (ArrayList<Boat>) input.readObject();
 
-        } catch (IOException exception) {
-            System.out.println("Error loading fleet: "
-                    + exception.getMessage());
-
-        } catch (ClassNotFoundException exception) {
-            System.out.println("Error restoring fleet: "
-                    + exception.getMessage());
         }
+
         return fleet;
 
     }
@@ -155,8 +175,9 @@ public class FleetManagement {
      * Displays and processes the fleet management menu.
      *
      * @param fleet the fleet being managed
+     * @param keyboard the Scanner used to read user input
      */
-    private static void runMenu(ArrayList<Boat> fleet) {
+    private static void runMenu(ArrayList<Boat> fleet,  Scanner keyboard) {
         String choice;
 
         do {
@@ -170,15 +191,15 @@ public class FleetManagement {
                     break;
 
                 case "A":
-                    addBoat(fleet);
+                    addBoat(fleet, keyboard);
                     break;
 
                 case "R":
-                    removeBoat(fleet);
+                    removeBoat(fleet, keyboard);
                     break;
 
                 case "E":
-                    requestExpense(fleet);
+                    requestExpense(fleet, keyboard);
                     break;
 
                 case "X":
@@ -233,8 +254,9 @@ public class FleetManagement {
      * Adds a new boat to the fleet using CSV input.
      *
      * @param fleet the fleet to modify
+     * @param keyboard the Scanner used to read user input
      */
-    private static void addBoat(ArrayList<Boat> fleet) {
+    private static void addBoat(ArrayList<Boat> fleet, Scanner keyboard) {
         String csvLine;
         Boat boat;
 
@@ -245,6 +267,8 @@ public class FleetManagement {
         boat = parseBoat(csvLine);
 
         fleet.add(boat);
+
+        System.out.println();
 
     }
 
@@ -273,8 +297,9 @@ public class FleetManagement {
      * Removes a boat from the fleet by name.
      *
      * @param fleet the fleet to modify.
+     * @param keyboard the Scanner used to read user input
      */
-    private static void removeBoat(ArrayList<Boat> fleet) {
+    private static void removeBoat(ArrayList<Boat> fleet, Scanner keyboard) {
         String name;
         Boat boat;
 
@@ -299,8 +324,9 @@ public class FleetManagement {
      * Requests authorization for a boat maintenance expense.
      *
      * @param fleet the fleet being managed
+     * @param keyboard the Scanner used to read user input
      */
-    private static void requestExpense(ArrayList<Boat> fleet) {
+    private static void requestExpense(ArrayList<Boat> fleet, Scanner keyboard) {
         String name;
         Boat boat;
         double amount;

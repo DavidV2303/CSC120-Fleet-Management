@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class Boat implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final double INITIAL_BOAT_EXPENSE = 0.0;
+    private static final int CENTS_PER_DOLLAR = 100;
 
     private final BoatType type;
     private final String name;
@@ -74,8 +75,20 @@ public class Boat implements Serializable {
      * @return true if authorized, false otherwise
      */
     public boolean authorizeExpense(double amount) {
-        if (amount >= 0 && expenses + amount <= purchasePrice) {
-            expenses += amount;
+        long purchasePriceInCents;
+        long expensesInCents;
+        long amountInCents;
+
+        purchasePriceInCents = Math.round(purchasePrice * CENTS_PER_DOLLAR);
+        expensesInCents = Math.round(expenses * CENTS_PER_DOLLAR);
+        amountInCents = Math.round(amount * CENTS_PER_DOLLAR);
+
+        if (Double.isFinite(amount) && amount >= 0 &&
+                amountInCents <= purchasePriceInCents - expensesInCents) {
+
+            expensesInCents += amountInCents;
+            expenses = (double) expensesInCents / CENTS_PER_DOLLAR;
+
             return true;
         }
 
