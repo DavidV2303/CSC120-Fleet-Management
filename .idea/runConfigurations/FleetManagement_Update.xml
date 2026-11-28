@@ -2,6 +2,7 @@
   <configuration default="false" name="FleetManagement Update" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="FleetManagement" />
     <module name="CSC120-Fleet-Management" />
+    <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

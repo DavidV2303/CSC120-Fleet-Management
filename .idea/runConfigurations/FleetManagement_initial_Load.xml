@@ -3,6 +3,7 @@
     <option name="MAIN_CLASS_NAME" value="FleetManagement" />
     <module name="CSC120-Fleet-Management" />
     <option name="PROGRAM_PARAMETERS" value="FleetData.csv" />
+    <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
